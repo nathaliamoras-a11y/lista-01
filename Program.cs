@@ -1,43 +1,48 @@
-﻿Console.WriteLine("Informe o saldo inicial:");
-double saldo = double.Parse(Console.ReadLine());
+﻿Console.WriteLine("Informe a quantidade inicial em estoque:");
+int estoque = int.Parse(Console.ReadLine());
 
 int opcao;
 
 do
 {
     Console.WriteLine("Escolha a operação:");
-    Console.WriteLine("1 - Entrada de dinheiro");
-    Console.WriteLine("2 - Saída de dinheiro");
-    Console.WriteLine("3 - Encerrar");
+    Console.WriteLine("1 - Entrada de produtos");
+    Console.WriteLine("2 - Saída de produtos");
+    Console.WriteLine("3 - Consultar estoque");
+    Console.WriteLine("4 - Encerrar");
 
     opcao = int.Parse(Console.ReadLine());
 
     if (opcao == 1)
     {
-        Console.WriteLine("Informe o valor da movimentação:");
-        double valor = double.Parse(Console.ReadLine());
+        Console.WriteLine("Informe a quantidade movimentada:");
+        int quantidade = int.Parse(Console.ReadLine());
 
-        saldo += valor;
+        estoque += quantidade;
 
-        Console.WriteLine("Entrada registrada. Saldo atual: R$ " + saldo);
+        Console.WriteLine("Entrada registrada. Estoque atual: " + estoque);
     }
     else if (opcao == 2)
     {
-        Console.WriteLine("Informe o valor da movimentação:");
-        double valor = double.Parse(Console.ReadLine());
+        Console.WriteLine("Informe a quantidade movimentada:");
+        int quantidade = int.Parse(Console.ReadLine());
 
-        if (valor <= saldo)
+        if (quantidade <= estoque)
         {
-            saldo -= valor;
+            estoque -= quantidade;
 
-            Console.WriteLine("Saída registrada. Saldo atual: R$ " + saldo);
+            Console.WriteLine("Saída registrada. Estoque atual: " + estoque);
         }
         else
         {
-            Console.WriteLine("Saldo insuficiente.");
+            Console.WriteLine("Quantidade insuficiente em estoque.");
         }
     }
+    else if (opcao == 3)
+    {
+        Console.WriteLine("Estoque atual: " + estoque);
+    }
 
-} while (opcao != 3);
+} while (opcao != 4);
 
-Console.WriteLine("Saldo final: R$ " + saldo);
+Console.WriteLine("Estoque final: " + estoque);
